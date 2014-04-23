@@ -1,12 +1,5 @@
 __author__ = 'messierz'
 
-import sys
-import pygame
-import time
-import pprint
-import math
-import numpy as np
-
 class Point3D(object):
     def __init__(self, x = 0, y = 0, z = 0, point = None):
         if point is None:
@@ -42,13 +35,11 @@ class Point3D(object):
         return neighbors
 
     def IsExistedIn(self, list):
-        isExist = False
-        for item in list:
-            isExist = isExist or self.Equal(item)
-        return isExist
+        return any(p.x == self.x and p.y == self.y and p.z == self.z for p in list)
 
     def _IsExistedIn(self, list):
-        isExist = False
+        # return any(self.x == p.x and self.y == p.y and self.z < p.z for p in list)
         for item in list:
-            isExist = isExist or ((self.x == item.x) and (self.y == item.y) and (self.z < item.z))
-        return isExist
+            isExist = (self.x == item.x) and (self.y == item.y) and (self.z < item.z)
+            if isExist: return True
+        return False

@@ -16,5 +16,7 @@ class Obstacle():
         for i in xrange(self.image.shape[0]):
             for j in xrange(self.image.shape[1]):
                 if self.image[i, j, 0] < self.maxHeight:
+                    # for k in xrange(self.maxHeight - self.image[i, j, 0]):
+                    #     self.obstacle.append(Point3D(j, i, k))
                     self.obstacle.append(Point3D(j, i, self.maxHeight - self.image[i, j, 0]))
         return self.obstacle
